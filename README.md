@@ -9,13 +9,6 @@ Cieľom bolo navrhnúť a implementovať jednoduchý systém na vykonávanie sim
 - Úlohy sa vyhodnocujú automaticky na základe odpovedí a záznamov.
 - Možnosť sledovať úspešnosť a skóre.
 
-##Diagramy
-Bloková schéma testovacieho prostredia:
-![Testovacie prostredie](docs/testovacie_prostredie.png)
-
-Vývojový diagram systému:
-![Vývojový diagram](docs/vyvojovy_diagram.png)
-
 ##Technológie
 - Node.js
 - HTML/CSS/JS
@@ -32,3 +25,13 @@ Vývojový diagram systému:
 git clone https://github.com/kollard/Cybersecurity-Education-System.git
 2. Spusti server.js v Node.js
 3. Otvor index.html vo webovom prehliadači
+
+##Bloková schéma testovacieho prostredia
+![Bloková schéma](https://github.com/user-attachments/assets/ba5ce6d0-8e7e-4ca5-8f2a-fbe117b32242)
+
+
+##Vývojový diagram tvorby systému cvičenia
+![Vývojový diagram](https://github.com/user-attachments/assets/1d1dc26f-97fc-4619-9370-0784ede58bff)
+
+
+
