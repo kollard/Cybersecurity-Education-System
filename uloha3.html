@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Úloha 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            width: 80%;
+            max-width: 1000px;
+        }
+
+        .instructions {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 40%;
+            margin-right: 20px; 
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 40%;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        h1, h2 {
+            color: #333;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        p, label {
+            font-size: 14px;
+            color: #222;
+        }
+
+        input[type="text"], button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px 0;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"] {
+            border: 1px solid #ddd;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .feedback, #totalScore {
+            color: #333;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        #totalScore {
+            font-size: 16px;
+        }
+        
+	
+	.bottom-container {
+	    position: fixed;
+	    bottom: 20px;
+	    left: 0;
+	    width: 100%;
+	    text-align: center;
+	    background-color: #fff; 
+	    padding: 10px;
+	    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+	}
+
+	.back-to-home {
+	    margin-top: 20px; 
+	}
+	    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="instructions">
+            <h2>Postup pre úlohu 3</h2>
+            <p>1. Krok - zapnite si server so snapom uloženým ako úloha 3</p>
+            <p>2. Krok - zistite pomocou nmap ci je otvoreny port pre Redis server</p>
+            <p>3. Krok - pripojte sa na cli Redis servera
+            <p>- ip servera: 10.0.2.4</p>
+            <p>- port: 6379</p>
+            <p>4. Krok - po ziskani hesla sa pomocou ssh pripojte na server pod uzivatelom uloha3</p>
+            <p>5. Krok - na ziskanie hesla z hashu roota pouzite prikaz john s wordlistom rockyou.txt</p>
+        </div>
+
+        <form id="exerciseForm">
+            <h1>Úloha 3</h1>
+            <div class="question">
+                <label for="question1">1. Napiste heslo z kluca na Redis serveri pre pouzivatela Uloha3.</label>
+                <input type="text" id="uloha3-otazka1"><br>
+	        <div class="feedback" id="feedback-uloha3-otazka1"></div>
+	        <button type="button" onclick="submitAnswer(3, 1)">Poslať odpoveď</button>
+                <button type="button" onclick="getHint(3, 1)">Získať nápovedu</button>
+            </div>
+            
+            <div class="question">
+                <label for="question2">2. V dokumentoch pouzivatela uloha3 najdite hash roota a sem zadajte datum narodenia psa.</label>
+                <input type="text" id="uloha3-otazka2"><br>
+	        <div class="feedback" id="feedback-uloha3-otazka2"></div>
+	        <button type="button" onclick="submitAnswer(3, 2)">Poslať odpoveď</button>
+                <button type="button" onclick="getHint(3, 2)">Získať nápovedu</button>
+            </div>
+            
+            <div class="question">
+                <label for="question3">3. Napíšte získané heslo pre roota po rozlúštení hashu.</label>
+                <input type="text" id="uloha3-otazka3"><br>
+	        <div class="feedback" id="feedback-uloha3-otazka3"></div>
+	        <button type="button" onclick="submitAnswer(3, 3)">Poslať odpoveď</button>
+                <button type="button" onclick="getHint(3, 3)">Získať nápovedu</button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="bottom-container">
+        <div id="uspesnost-uloha3">Úspešnosť: 0%</div>
+        <div id="hintsRemaining">Zostávajúce nápovedy: 2</div>
+        <div class="back-to-home">
+            <a href="index.html">Späť na Úvod</a>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

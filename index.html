@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cvičenie 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1, .uspesnost {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Vitajte v Kybernetickom Cvičení</h1>
+            <p>Toto cvičenie je navrhnuté na poskytnutie praktických skúseností v rôznych aspektoch kybernetickej bezpečnosti. Skladá sa z troch úloh, každá zameraná na iný typ bezpečnostnej zraniteľnosti. Budete mať príležitosť použiť teoretické znalosti v praktických scenároch a naučiť sa, ako identifikovať a reagovať na bezpečnostné hrozby.</p>
+        </header>
+        
+        <footer>
+            <p>Pripravte sa na výzvu a začnite pracovať na úlohách, aby ste rozšírili svoje zručnosti a zlepšili svoje pochopenie kybernetickej bezpečnosti.</p>
+        </footer>
+
+        <main>
+            <section class="task">
+                <h2>Úloha 1: Identifikácia a zneužitie SUID zraniteľnosti</h2>
+                <p>V prvej úlohe sa zameriame na identifikáciu a zneužitie SUID (Set User ID) zraniteľností na Unixových systémoch. Táto úloha vás naučí, ako vyhľadať a zneužiť binárne súbory so SUID bitom, čo môže umožniť získanie vyšších oprávnení na systéme.</p>
+                <a href="uloha1.html">Prejsť na Úlohu 1</a>
+            </section>
+
+            <section class="task">
+                <h2>Úloha 2: Exploitation techniky na Metasploitable</h2>
+                <p>Druhá úloha vás prevedie procesom exploitácie známej zraniteľnosti v Samba serveri na Metasploitable stroji. Budete mať príležitosť vykonať skutočný útok a získať kontrolu nad zraniteľným systémom.</p>
+                <a href="uloha2.html">Prejsť na Úlohu 2</a>
+            </section>
+
+            <section class="task">
+                <h2>Úloha 3: Bezpečnosť a zneužitie Redis servera</h2>
+                <p>Tretia úloha sa zameriava na nezabezpečené konfigurácie Redis servera. Naučíte sa, ako môžu nedostatky v konfigurácii viesť k prístupu k citlivým dátam a ako môžete tieto zraniteľnosti zneužiť na získanie prístupu k chráneným informáciám.</p>
+                <a href="uloha3.html">Prejsť na Úlohu 3</a>
+            </section>
+        </main>
+
+        <aside class="uspesnost">
+            <h3>Vaša úspešnosť</h3>
+            <p>Úspešnosť za Úlohu 1: <span id="celkovaUspesnost-uloha1">0%</span></p>
+            <p>Úspešnosť za Úlohu 2: <span id="celkovaUspesnost-uloha2">0%</span></p>
+            <p>Úspešnosť za Úlohu 3: <span id="celkovaUspesnost-uloha3">0%</span></p>
+            <p>Celková úspešnosť: <span id="celkovaUspesnost">0%</span></p>
+            <button onclick="sendResults()">Odoslať výsledky</button>
+            <button onclick="resetCvicenie()">Resetovat vysledky</button>
+        </aside>
+
+       
+    </div>
+
+
+    <script>
+    
+    // Reset údajov 
+    
+    function resetCvicenie() {     
+        localStorage.clear(); 
+        updateScores(); 
+        document.getElementById('celkovaUspesnost').textContent = `0%`;
+    }
+    
+    // Aktualizacia údajov 
+    
+    function updateScores() {
+        const scores = {
+            'celkovaUspesnost-uloha1': 'uspesnost-uloha1',
+            'celkovaUspesnost-uloha2': 'uspesnost-uloha2',
+            'celkovaUspesnost-uloha3': 'uspesnost-uloha3'
+        };
+        
+        Object.keys(scores).forEach(function(key) {
+            const score = localStorage.getItem(scores[key]) || '0';
+            document.getElementById(key).textContent = `${score}%`; 
+        });
+    }
+    
+    //Vypocet celkovej uspesnosti
+    
+    function vypocitajCelkovuUspesnost() {
+        let celkoveSkore = 0;
+        let pocetUloh = 2; 
+	for (let i = 1; i <= pocetUloh; i++) {
+	   let skoreZaUlohu = parseFloat(localStorage.getItem(`uspesnost-uloha${i}`)) || 0;
+	   celkoveSkore += skoreZaUlohu;
+	 }
+        let celkovaUspesnost = pocetUloh > 0 ? celkoveSkore / pocetUloh : 0;
+        document.getElementById('celkovaUspesnost').textContent = `${celkovaUspesnost.toFixed(0)}%`;
+
+        localStorage.setItem('celkovaUspesnost', celkovaUspesnost.toFixed(2));
+    }
+    
+    //Odoslanie vysledkov uspesnosti cviciaceho
+    
+    function sendResults() {
+        const name = prompt('Napiste svoje meno_priezvisko:');
+        const results = {
+            Úspešnosť_za_úlohu_1: document.getElementById('celkovaUspesnost-uloha1').textContent,
+            Úspešnosť_za_úlohu_2: document.getElementById('celkovaUspesnost-uloha2').textContent,
+            Úspešnosť_za_úlohu_3: document.getElementById('celkovaUspesnost-uloha3').textContent,
+            Celková_úspešnosť: document.getElementById('celkovaUspesnost').textContent,
+        };
+
+        fetch('/send-results', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name, results }),
+        })
+        .then(response => response.text())
+        .then(data => alert(data))
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+    
+
+    window.onload = function() {
+        updateScores(); 
+        vypocitajCelkovuUspesnost();
+    }
+	</script>
+
+</body>
+</html>

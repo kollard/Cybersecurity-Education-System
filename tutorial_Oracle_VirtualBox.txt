@@ -1,0 +1,19 @@
+# Inštalácia a nastavenie Oracle VirtualBox
+
+## Krok 1: Stiahnutie a inštalácia VirtualBoxu
+Navštívte [oficiálnu stránku VirtualBoxu](https://www.virtualbox.org/) a stiahnite si najnovšiu verziu pre váš operačný systém. Postupujte podľa inštrukcií pre inštaláciu.
+
+## Krok 2: Vytvorenie nového virtuálneho stroja
+- Otvorte VirtualBox a kliknite na "New".
+- Pomenujte váš virtuálny stroj a vyberte operačný systém.
+- Priraďte dostatočnú pamäť RAM.
+- Vytvorte virtuálny pevný disk alebo importujte existujúci.
+
+## Krok 3: Importovanie exportovaných obrazov VM so snapshotmi
+- Prejdite do "File" > "Import Appliance".
+- Vyberte váš exportovaný súbor (.ova alebo .ovf) a postupujte podľa inštrukcií na obrazovke.
+
+## Krok 4: Špecifické nastavenia a konfigurácie
+- Nastavte sieťové pripojenie podľa potrieb vášho projektu.
+- Uistite sa, že máte správne nastavené zdieľané priečinky a iné potrebné konfigurácie.
+
